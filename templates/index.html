@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookNudge 📚 — Your Friendly Reading Reminder</title>
+  <meta name="description" content="BookNudge reminds you to read your books every day with fun nudges and streak tracking." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- ========== NOTIFICATION BANNER ========== -->
+  <div class="notif-banner" id="notif-banner">
+    <span>🔔 Enable notifications so I can remind you to read!</span>
+    <button class="notif-btn" id="notif-enable">Allow Notifications</button>
+    <button class="notif-dismiss" id="notif-dismiss">Maybe later</button>
+  </div>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-icon">📚</span>
+        <div>
+          <h1 class="brand-name">BookNudge</h1>
+          <p class="brand-tagline">Because your books miss you.</p>
+        </div>
+      </div>
+      <button class="btn btn-add" id="btn-add-book">
+        <span class="btn-icon">+</span>
+        Add Book
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== QUOTE BAR ========== -->
+  <div class="quote-bar" id="quote-bar">
+    <div class="container">
+      <p class="quote-text" id="quote-text">Loading wisdom…</p>
+      <p class="quote-author" id="quote-author"></p>
+    </div>
+  </div>
+
+  <!-- ========== MAIN ========== -->
+  <main class="main">
+    <div class="container">
+
+      <!-- Empty state -->
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <div class="empty-icon">📖</div>
+        <h2 class="empty-title">Your bookshelf is feeling lonely…</h2>
+        <p class="empty-text">Add your first book and let's start a reading adventure!</p>
+        <button class="btn btn-add" id="btn-add-empty">+ Add Your First Book</button>
+      </div>
+
+      <!-- Book grid -->
+      <div class="book-grid" id="book-grid"></div>
+
+    </div>
+  </main>
+
+  <!-- ========== ADD/EDIT MODAL ========== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">📖 Add a New Book</h2>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+
+      <form class="modal-form" id="book-form">
+        <input type="hidden" id="edit-id" value="" />
+
+        <div class="form-group">
+          <label for="book-title">Book Title <span class="required">*</span></label>
+          <input type="text" id="book-title" placeholder="e.g. The Great Gatsby" required />
+        </div>
+
+        <div class="form-group">
+          <label for="book-author">Author</label>
+          <input type="text" id="book-author" placeholder="e.g. F. Scott Fitzgerald" />
+        </div>
+
+        <div class="form-group">
+          <label for="book-time">Daily Reminder Time 🔔</label>
+          <input type="time" id="book-time" value="09:00" />
+          <span class="form-hint">I'll nudge you to read at this time every day!</span>
+        </div>
+
+        <button type="submit" class="btn btn-submit" id="btn-submit">📚 Add to Shelf</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ========== CONFETTI CANVAS ========== -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Made with 📚 &amp; ☕  by <strong>BookNudge</strong> — Now go read something!</p>
+    </div>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
