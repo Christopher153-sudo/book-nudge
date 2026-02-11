@@ -182,8 +182,9 @@ def get_quote():
     return jsonify(random.choice(QUOTES))
 
 
-# ── Entry point ──────────────────────────────────────────────────────
+# ── Initialize DB on import (works with both python3 app.py AND gunicorn) ──
+
+init_db()
 
 if __name__ == '__main__':
-    init_db()
     app.run(debug=True, port=5000)
